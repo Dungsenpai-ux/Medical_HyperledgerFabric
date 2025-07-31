@@ -85,24 +85,24 @@ const registerUser = async (userID, userRole) => {
     console.log(`Successfully registered and enrolled user ${userID} and imported it into the wallet`);
      // -----------------------Create Wallet with default balance on ledger------------------ 
     // Create a new gateway for connecting to our peer node.
-    // const gateway = new Gateway();
-    // await gateway.connect(ccp, { wallet, identity: userID, discovery: { enabled: true, asLocalhost: true } });
+    const gateway = new Gateway();
+    await gateway.connect(ccp, { wallet, identity: userID, discovery: { enabled: true, asLocalhost: true } });
 
-    // // Get the network (channel) our contract is deployed to.
-    // const network = await gateway.getNetwork(channelName);
+    // Get the network (channel) our contract is deployed to.
+    const network = await gateway.getNetwork(channelName);
 
-    // // Get the contract from the network.
-    // const contract = network.getContract(chaincodeName);
+    // Get the contract from the network.
+    const contract = network.getContract(chaincodeName);
 
-    // //async createWallet(ctx, userId, timeStamp, amount)
-    // const timeStamp = new Date().getTime();
-    // const userBalance = 0;
-    // const res = await contract.submitTransaction('createWallet', timeStamp, userBalance);
-    // const result = JSON.parse(res);
-    // console.log("Wallet status ::", res.toString(),result);
+    //async createWallet(ctx, userId, timeStamp, amount)
+    const timeStamp = new Date().getTime();
+    const userBalance = 0;
+    const res = await contract.submitTransaction('createWallet', timeStamp, userBalance);
+    const result = JSON.parse(res);
+    console.log("Wallet status ::", res.toString(),result);
    
-    // // Disconnect from the gateway.
-    // await gateway.disconnect();
+    // Disconnect from the gateway.
+    await gateway.disconnect();
     
     return {
         statusCode: 200,
