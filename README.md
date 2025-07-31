@@ -25,7 +25,7 @@ docker ps    // to check running container or check in docker desktop
 ## to run network with ca and create mychannel 
 ```bash
 cd fabric-samples/test-network
-bash
+```
 Create network with ca cert:
 ```bash
 ./network.sh up createChannel -ca -s couchdb
